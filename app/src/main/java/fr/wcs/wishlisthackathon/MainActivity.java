@@ -58,87 +58,87 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                simpleProgressBar.setVisibility(View.VISIBLE);
+            simpleProgressBar.setVisibility(View.VISIBLE);
 
-                //On recupere le contenu des edit text
-                final String userNameContent = editTextUserName.getText().toString();
-                final String userPasswordContent = editTextUserPassword.getText().toString();
+            //On recupere le contenu des edit text
+            final String userNameContent = editTextUserName.getText().toString();
+            final String userPasswordContent = editTextUserPassword.getText().toString();
 
-                // Toast si les champs ne sont pas remplis
-                if (TextUtils.isEmpty(userNameContent) || TextUtils.isEmpty(userPasswordContent)) {
-                    Toast.makeText(getApplicationContext(), R.string.error_fill, Toast.LENGTH_SHORT).show();
-                    simpleProgressBar.setVisibility(view.GONE);
-                } else {
-                    // Sinon on recupere tous les users
-                    final DatabaseReference refUser = FirebaseDatabase.getInstance().getReference("User");
-                    refUser.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            for (DataSnapshot dsp : dataSnapshot.getChildren()) {
-                                User userValues = dsp.getValue(User.class);
+            // Toast si les champs ne sont pas remplis
+            if (TextUtils.isEmpty(userNameContent) || TextUtils.isEmpty(userPasswordContent)) {
+                Toast.makeText(getApplicationContext(), R.string.error_fill, Toast.LENGTH_SHORT).show();
+                simpleProgressBar.setVisibility(view.GONE);
+            } else {
+                // Sinon on recupere tous les users
+                final DatabaseReference refUser = FirebaseDatabase.getInstance().getReference("User");
+                refUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                            User userValues = dsp.getValue(User.class);
 
-                                //On compare le contenu des edit text avec Firebase grâce au user_name
-                                if (userValues.getUser_name().equals(userNameContent)) {
-                                    // On verifie le password
-                                    if (userValues.getUser_password().equals(mEncrypt(userPasswordContent, "AES"))) {
+                            //On compare le contenu des edit text avec Firebase grâce au user_name
+                            if (userValues.getUser_name().equals(userNameContent)) {
+                                // On verifie le password
+                                if (userValues.getUser_password().equals(mEncrypt(userPasswordContent, "AES"))) {
 
-                                        // La clé de l'utilisateur qu'on va utiliser partout dans l'application.
-                                        mUserId = dsp.getKey();
-                                        // On sauvegarde l'utilisateur connu dans les sharedPreferences
-                                        SharedPreferences.Editor editor = sharedpreferences.edit();
-                                        editor.putString(userName, userNameContent);
-                                        editor.putString(userPassword, userPasswordContent);
-                                        editor.putString("mUserId", mUserId);
-                                        editor.apply();
+                                    // La clé de l'utilisateur qu'on va utiliser partout dans l'application.
+                                    mUserId = dsp.getKey();
+                                    // On sauvegarde l'utilisateur connu dans les sharedPreferences
+                                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                                    editor.putString(userName, userNameContent);
+                                    editor.putString(userPassword, userPasswordContent);
+                                    editor.putString("mUserId", mUserId);
+                                    editor.apply();
 
-                                        Intent intent = new Intent(getApplicationContext(), WishActivity.class);
-                                        startActivity(intent);
+                                    Intent intent = new Intent(getApplicationContext(), WishActivity.class);
+                                    startActivity(intent);
 
-                                    } else {
-                                        // Si le mot de passe ou le pseudo ne concordent pas
-                                        Toast.makeText(getApplicationContext(), R.string.error_password, Toast.LENGTH_SHORT).show();
-                                        simpleProgressBar.setVisibility(View.GONE);
-                                    }
-                                    return;
+                                } else {
+                                    // Si le mot de passe ou le pseudo ne concordent pas
+                                    Toast.makeText(getApplicationContext(), R.string.error_password, Toast.LENGTH_SHORT).show();
+                                    simpleProgressBar.setVisibility(View.GONE);
                                 }
-                            }
-
-                            // Utilisateur nouveau : le compte n'existe pas, on le créer !
-                            User user = new User(userNameContent, userPasswordContent);
-                            user.setUser_name(userNameContent);
-                            user.setUser_password(mEncrypt(userPasswordContent, "AES"));
-                            String userId = refUser.push().getKey();
-                            refUser.child(userId).setValue(user);
-
-                            // La clé de l'utilisateur qu'on va utiliser partout dans l'application.
-                            mUserId = userId;
-
-                            // On enregistre dans les shared Preferences
-                            SharedPreferences.Editor editor = sharedpreferences.edit();
-                            editor.putString(userName, userNameContent);
-                            editor.putString(userPassword, userPasswordContent);
-                            editor.putString("mUserId", userId);
-                            editor.apply();
-                            Toast.makeText(getApplicationContext(), R.string.created_user, Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), WishActivity.class));
-                        }
-
-                        // Encryptage du mot de passe
-                        public String mEncrypt(String userPassword, String key) {
-                            try {
-                                Key clef = new SecretKeySpec(key.getBytes("ISO-8859-2"), "Blowfish");
-                                Cipher cipher = Cipher.getInstance("Blowfish");
-                                cipher.init(Cipher.ENCRYPT_MODE, clef);
-                                return new String(cipher.doFinal(userPassword.getBytes()));
-                            } catch (Exception e) {
-                                return null;
+                                return;
                             }
                         }
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
+
+                        // Utilisateur nouveau : le compte n'existe pas, on le créer !
+                        User user = new User(userNameContent, userPasswordContent);
+                        user.setUser_name(userNameContent);
+                        user.setUser_password(mEncrypt(userPasswordContent, "AES"));
+                        String userId = refUser.push().getKey();
+                        refUser.child(userId).setValue(user);
+
+                        // La clé de l'utilisateur qu'on va utiliser partout dans l'application.
+                        mUserId = userId;
+
+                        // On enregistre dans les shared Preferences
+                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                        editor.putString(userName, userNameContent);
+                        editor.putString(userPassword, userPasswordContent);
+                        editor.putString("mUserId", userId);
+                        editor.apply();
+                        Toast.makeText(getApplicationContext(), R.string.created_user, Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), WishActivity.class));
+                    }
+
+                    // Encryptage du mot de passe
+                    public String mEncrypt(String userPassword, String key) {
+                        try {
+                            Key clef = new SecretKeySpec(key.getBytes("ISO-8859-2"), "Blowfish");
+                            Cipher cipher = Cipher.getInstance("Blowfish");
+                            cipher.init(Cipher.ENCRYPT_MODE, clef);
+                            return new String(cipher.doFinal(userPassword.getBytes()));
+                        } catch (Exception e) {
+                            return null;
                         }
-                    });
-                }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+            }
             }
         });
     }

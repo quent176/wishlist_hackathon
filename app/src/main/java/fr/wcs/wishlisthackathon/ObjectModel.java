@@ -10,17 +10,19 @@ public class ObjectModel {
     private String object_image;
     boolean object_offered;
     String object_user_id;
+    String object_user_name;
     String pigeon_user_id;
 
     public ObjectModel() {
         // Needed for firebase
     }
 
-    public ObjectModel(String object_description, String object_image, boolean object_offered, String object_user_id, String pigeon_user_id) {
+    public ObjectModel(String object_description, String object_image, boolean object_offered, String object_user_id, String object_user_name, String pigeon_user_id) {
         this.object_description = object_description;
         this.object_image = object_image;
         this.object_offered = object_offered;
         this.object_user_id = object_user_id;
+        this.object_user_name = object_user_name;
         this.pigeon_user_id = pigeon_user_id;
     }
 
@@ -62,5 +64,13 @@ public class ObjectModel {
 
     public void setPigeon_user_id(String pigeon_user_id) {
         this.pigeon_user_id = pigeon_user_id;
+    }
+
+    public String getObject_user_name() {
+        return object_user_name;
+    }
+
+    public void setObject_user_name(String object_user_name) {
+        this.object_user_name = object_user_name;
     }
 }

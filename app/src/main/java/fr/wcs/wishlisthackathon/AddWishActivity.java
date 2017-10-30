@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +20,7 @@ public class AddWishActivity extends AppCompatActivity {
     EditText descriptionImage, linkImage;
     String descriptionImageContent, linkImageContent;
     Button cancel, create;
-    String mUserId;
+    String mUserId, userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class AddWishActivity extends AppCompatActivity {
         // Pour recuperer la key d'un user (pour le lier a une quête)
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         mUserId = sharedPreferences.getString("mUserId", mUserId);
+        userName = sharedPreferences.getString("NameKey", userName);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference("Object");
@@ -63,9 +65,7 @@ public class AddWishActivity extends AppCompatActivity {
                 linkImageContent = linkImage.getText().toString();
 
                 ObjectModel objectModel = new ObjectModel(descriptionImageContent, linkImageContent,
-                        false, mUserId, "null");
-                objectModel.setObject_description(descriptionImageContent);
-                objectModel.setObject_image(linkImageContent);
+                        false, mUserId, userName, "null");
 
                 myRef.push().setValue(objectModel);
 

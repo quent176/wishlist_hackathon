@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.google.firebase.database.DataSnapshot;
@@ -67,29 +68,38 @@ public class Tab3_ToOffer extends Fragment {
             }
         });
 
-        friendSearched = SearchBarUsers.getText().toString();
-        Log.d("TAG", friendSearched);
-
-        mObjectDatabaseReference = mDatabase.getReference().child("Object");
-        mObjectDatabaseReference.orderByChild("object_user_name").equalTo(friendSearched)
-                .addValueEventListener(new ValueEventListener() {
+        Button searchButton = (Button) rootView.findViewById(R.id.button2);
+        searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onClick(View view) {
+                friendSearched = SearchBarUsers.getText().toString();
+                Log.d("TAG", friendSearched);
 
-                for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    ObjectModel wish = data.getValue(ObjectModel.class);
-                    wish.getObject_image();
-                    ImageButton imageTest = (ImageButton) rootView.findViewById(R.id.imageButton1);
-                    Picasso.with(getContext()).load(wish.getObject_image()).into(imageTest);
-                }
+                mObjectDatabaseReference = mDatabase.getReference().child("Object");
+                mObjectDatabaseReference.orderByChild("object_user_name").equalTo(friendSearched)
+                        .addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
 
-            }
+                                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                                    ObjectModel wish = data.getValue(ObjectModel.class);
+                                    wish.getObject_image();
+                                    ImageButton imageTest = (ImageButton) rootView.findViewById(R.id.imageButton1);
+                                    Picasso.with(getContext()).load(wish.getObject_image()).into(imageTest);
+                                }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
 
             }
         });
+
+
 
 
         return rootView;
