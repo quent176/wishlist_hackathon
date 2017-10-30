@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">WishList Hackathon</string>
+
+    // Connexion Page
+    <string name="connexion">Connexion</string>
+    <string name="pseudo">Pseudo</string>
+    <string name="password">Mot de passe</string>
+
 </resources>
