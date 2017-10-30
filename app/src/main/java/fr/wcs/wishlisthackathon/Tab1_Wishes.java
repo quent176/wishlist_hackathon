@@ -10,18 +10,15 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -51,7 +48,7 @@ public class Tab1_Wishes extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                ArrayList<ObjectModel> wishList = new ArrayList<>();
+                final ArrayList<ObjectModel> wishList = new ArrayList<>();
 
                 for (DataSnapshot data : dataSnapshot.getChildren()){
 
@@ -63,18 +60,20 @@ public class Tab1_Wishes extends Fragment {
                     Log.e("WISHES",String.valueOf(wishList.size()) );
                 }
 
-                // TODO creating adapter
                 adapter = new WishAdapter(getActivity(), wishList);
-//                if(wishList.size() > 0){
-//                 //   mBeMyFirst.setVisibility(View.GONE);
-//                }
-                for(int i = 0; i<wishList.size(); i++){
-                    Log.e("WISHES", wishList.get(i).getObject_description() + " - " + wishList.get(i).getObject_image());
-
-                }
 
                 myList.setAdapter(adapter);
                 Log.e("WISHES", "adapter added" );
+
+                myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        ObjectModel item = wishList.get(i);
+                        Intent intent = new Intent(getActivity(), ModifyActivity.class);
+                        intent.putExtra("objet", item);
+                        startActivity(intent);
+                    }
+                });
 
             }
 

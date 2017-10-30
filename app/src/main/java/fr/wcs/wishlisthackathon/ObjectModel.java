@@ -1,16 +1,19 @@
 package fr.wcs.wishlisthackathon;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by apprenti on 10/30/17.
  */
 
-public class ObjectModel {
+public class ObjectModel implements Parcelable {
 
     private String object_description;
     private String object_image;
-    boolean object_offered;
-    String object_user_id;
-    String pigeon_user_id;
+    private boolean object_offered;
+    private String object_user_id;
+    private String pigeon_user_id;
 
     public ObjectModel() {
         // Needed for firebase
@@ -23,6 +26,18 @@ public class ObjectModel {
         this.object_user_id = object_user_id;
         this.pigeon_user_id = pigeon_user_id;
     }
+
+    public static final Creator<ObjectModel> CREATOR = new Creator<ObjectModel>() {
+        @Override
+        public ObjectModel createFromParcel(Parcel in) {
+            return new ObjectModel(in);
+        }
+
+        @Override
+        public ObjectModel[] newArray(int size) {
+            return new ObjectModel[size];
+        }
+    };
 
     public String getObject_description() {
         return object_description;
@@ -62,5 +77,27 @@ public class ObjectModel {
 
     public void setPigeon_user_id(String pigeon_user_id) {
         this.pigeon_user_id = pigeon_user_id;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(object_description);
+        parcel.writeString(object_image);
+        parcel.writeByte((byte) (object_offered ? 1 : 0));
+        parcel.writeString(object_user_id);
+        parcel.writeString(pigeon_user_id);
+    }
+
+    private ObjectModel(Parcel in) {
+        object_description  = in.readString();
+        object_image  = in.readString();
+        object_offered  = in.readByte() != 0;
+        object_user_id = in.readString();
+        pigeon_user_id = in.readString();
     }
 }

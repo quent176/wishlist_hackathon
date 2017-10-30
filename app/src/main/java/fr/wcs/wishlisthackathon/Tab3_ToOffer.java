@@ -70,7 +70,6 @@ public class Tab3_ToOffer extends Fragment {
                     wishList.add(0, myObjectModel);
                 }
 
-                // TODO creating adapter
                 adapter = new WishAdapter(getActivity(), wishList);
                 if(wishList.size() > 0){
                     //   mBeMyFirst.setVisibility(View.GONE);

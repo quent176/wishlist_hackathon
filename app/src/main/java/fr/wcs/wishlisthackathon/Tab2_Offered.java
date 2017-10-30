@@ -58,7 +58,6 @@ public class Tab2_Offered extends Fragment {
                     }
                 }
 
-                // TODO creating adapter
                 adapter = new WishAdapter(getActivity(), wishList);
                 if(wishList.size() > 0){
                     //   mBeMyFirst.setVisibility(View.GONE);

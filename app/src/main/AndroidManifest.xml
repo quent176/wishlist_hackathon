@@ -26,8 +26,9 @@
         <activity
             android:name=".AddWishActivity_PopUp"
             android:label="ProfilePopUp"
-            android:theme="@style/AppTheme.PopUp"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.PopUp" />
+        <activity android:name=".ModifyActivity"></activity>
     </application>
 
 </manifest>
