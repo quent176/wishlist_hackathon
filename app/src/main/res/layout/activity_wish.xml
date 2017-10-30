@@ -23,6 +23,28 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
+            <!--<TextView-->
+                <!--android:id="@+id/TitleText"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_weight="1"-->
+                <!--android:gravity="center"-->
+                <!--android:text="Ma liste de souhaits"-->
+                <!--android:textColor="#FFFFFF"-->
+                <!--android:textSize="20sp"-->
+                <!--android:textStyle="bold"/>-->
+
+            <ImageView
+                android:id="@+id/share"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_width="50sp"
+                android:layout_height="match_parent"
+                android:src="@drawable/share4"
+                android:layout_gravity="end"
+                android:padding="5dp"/>
+
         </android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout

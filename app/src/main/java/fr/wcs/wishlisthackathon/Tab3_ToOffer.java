@@ -17,6 +17,7 @@ public class Tab3_ToOffer extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(tab3_tooffer, container, false);
+
         return rootView;
     }
 }

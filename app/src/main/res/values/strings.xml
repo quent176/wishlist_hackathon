@@ -30,4 +30,8 @@
     <string name="toast_upload_success">Upload réussi !</string>
     <string name="progressdialog_upload">Uploading ...</string>
 
+    // Share Button
+    <string name="share_text">Télécharge notre appli et crée toi ta propre WhishList !</string>
+    <string name="WishActivityTitle">Ma liste de souhaits</string>
+
 </resources>

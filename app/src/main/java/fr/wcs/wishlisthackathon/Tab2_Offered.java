@@ -18,6 +18,7 @@ public class Tab2_Offered extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(tab2_offered, container, false);
+
         return rootView;
     }
 }

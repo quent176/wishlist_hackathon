@@ -1,5 +1,6 @@
 package fr.wcs.wishlisthackathon;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -8,19 +9,37 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 public class WishActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+    ImageView share;
+    String[] tabsTitles = new String[] {"Ma liste de souhaits", "Mes cadeaux offerts", "Mes cadeaux à offrir"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wish);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        // Toolbar
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // Share
+        share = findViewById(R.id.share);
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text));
+                sendIntent.setType("text/plain");
+                startActivity(sendIntent);
+            }
+        });
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -31,6 +50,19 @@ public class WishActivity extends AppCompatActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                toolbar.setTitle(tabsTitles[position]);
+            }
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            }
+            @Override
+            public void onPageScrollStateChanged(int pos) {
+            }
+        });
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
