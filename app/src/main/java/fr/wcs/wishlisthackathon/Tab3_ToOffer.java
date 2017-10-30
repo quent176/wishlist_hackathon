@@ -43,12 +43,12 @@ public class Tab3_ToOffer extends Fragment {
         mUsersDatabaseReference.orderByChild("user_name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-               listUsers.clear();
-               for (DataSnapshot data : dataSnapshot.getChildren()) {
-                   User myUser = data.getValue(User.class);
-                   listUsers.add(myUser.getUser_name());
-                   Log.d("TAG", myUser.getUser_name());
-               }
+                listUsers.clear();
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    User myUser = data.getValue(User.class);
+                    listUsers.add(myUser.getUser_name());
+                    Log.d("TAG", myUser.getUser_name());
+                }
                 usersAdapter = new ArrayAdapter<String>(getActivity(), R.layout.search_box, R.id.tvHintCompletion, listUsers);
                 autoCompleteSearchUsers = (AutoCompleteTextView) rootView.findViewById(R.id.autoCompleteSearchUsers);
                 autoCompleteSearchUsers.setAdapter(usersAdapter);
@@ -59,6 +59,7 @@ public class Tab3_ToOffer extends Fragment {
 
             }
         });
+
 
         return rootView;
     }
