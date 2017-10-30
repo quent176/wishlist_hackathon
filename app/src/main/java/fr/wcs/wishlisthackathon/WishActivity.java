@@ -12,10 +12,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class WishActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+    public static FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+    public static DatabaseReference wishRef = mDatabase.getReference("Object");
+
+
     ImageView share;
     String[] tabsTitles = new String[] {"Ma liste de souhaits", "Mes cadeaux offerts", "Mes cadeaux à offrir"};
 
@@ -50,6 +57,7 @@ public class WishActivity extends AppCompatActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+
 
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
