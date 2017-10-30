@@ -2,6 +2,8 @@ package fr.wcs.wishlisthackathon;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText editTextUserName = findViewById(R.id.connexionUserName);
         final EditText editTextUserPassword = findViewById(R.id.connexionUserPassword);
         final ProgressBar simpleProgressBar = findViewById(R.id.simpleProgressBar);
+        simpleProgressBar.getIndeterminateDrawable().setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY);
         Button buttonSend = findViewById(R.id.buttonConnexionSend);
 
         // On recupere les Shared  Preferences

@@ -72,6 +72,5 @@ public class AddWishActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), WishActivity.class));
             }
         });
-
     }
 }

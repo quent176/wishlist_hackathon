@@ -33,5 +33,6 @@
     // Share Button
     <string name="share_text">Télécharge notre appli et crée toi ta propre WhishList !</string>
     <string name="WishActivityTitle">Ma liste de souhaits</string>
+    <string name="wishlist">WishList</string>
 
 </resources>

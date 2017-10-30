@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.wcs.wishlisthackathon.MainActivity">
-    <!--android:background="@drawable/snow1"-->
+    tools:context="fr.wcs.wishlisthackathon.MainActivity"
+    android:background="@drawable/snow2">
 
     <EditText
         style="@style/connexion_text"
@@ -28,7 +28,6 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/buttonConnexionSend"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/connexionUserName" />
 
@@ -39,31 +38,25 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonConnexionSend" />
 
     <Button
+        style="@style/button"
         android:id="@+id/buttonConnexionSend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/connexion"
         app:layout_constraintBottom_toTopOf="@+id/simpleProgressBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/connexionUserPassword" />
 
     <TextView
+        style="@style/connexion_title"
         android:id="@+id/textView"
-        android:layout_width="234dp"
-        android:layout_height="71dp"
-        android:gravity="center"
-        android:textSize="50sp"
-        android:text="WishList"
+        android:fontFamily="@font/arizonia"
+        android:text="@string/wishlist"
         app:layout_constraintBottom_toTopOf="@+id/connexionUserName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

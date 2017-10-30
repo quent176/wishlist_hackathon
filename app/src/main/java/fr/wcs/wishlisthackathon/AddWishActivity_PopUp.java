@@ -126,6 +126,7 @@ public class AddWishActivity_PopUp extends AppCompatActivity {
 
                     // TODO : règler le problème des photos prises par appareil
                     StorageReference storageRef = FirebaseStorage.getInstance().getReference("Photos").child(mUserId);
+
                     UploadTask uploadTask = storageRef.putBytes(data);
 
                     uploadTask.addOnFailureListener(new OnFailureListener() {
