@@ -26,6 +26,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,7 +42,7 @@ import static fr.wcs.wishlisthackathon.R.layout.tab3_tooffer;
 public class Tab3_ToOffer extends Fragment {
 
 
-    private RecyclerView.Adapter adapter;
+    private WishAdapter adapter;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mUsersDatabaseReference;
 
@@ -58,13 +59,7 @@ public class Tab3_ToOffer extends Fragment {
         String userId= "";
         userId = sharedPreferences.getString("mUserId", userId);
 
-        // Recycler View
-        final RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView3);
-        recyclerView.setHasFixedSize(true);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        RecyclerView.LayoutManager mLayoutManager;
-        mLayoutManager = new GridLayoutManager(getActivity(), 2);
-        recyclerView.setLayoutManager(mLayoutManager);
+        final ListView myList = rootView.findViewById(R.id.listOffrir);
 
         wishRef.orderByChild("pigeon_user_id").equalTo(userId).addValueEventListener(new ValueEventListener() {
             @Override
@@ -76,13 +71,12 @@ public class Tab3_ToOffer extends Fragment {
                 }
 
                 // TODO creating adapter
-              //  adapter = new WishAdapter(getActivity(), wishList);
+                adapter = new WishAdapter(getActivity(), wishList);
                 if(wishList.size() > 0){
                     //   mBeMyFirst.setVisibility(View.GONE);
                 }
+                myList.setAdapter(adapter);
 
-                //adding adapter to recyclerview
-              //  recyclerView.setAdapter(adapter);
             }
 
             @Override

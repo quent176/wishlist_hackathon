@@ -16,6 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.squareup.picasso.Picasso;
 
@@ -29,7 +30,8 @@ import static fr.wcs.wishlisthackathon.WishActivity.wishRef;
 
 public class Tab2_Offered extends Fragment {
 
-    private RecyclerView.Adapter adapter;
+    private WishAdapter adapter;
+
     String userId= "";
 
     @Override
@@ -38,17 +40,12 @@ public class Tab2_Offered extends Fragment {
 
         View rootView = inflater.inflate(tab2_offered, container, false);
 
+
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         userId = sharedPreferences.getString("mUserId", userId);
 
-        // Recycler View
-        final RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView2);
-        recyclerView.setHasFixedSize(true);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        RecyclerView.LayoutManager mLayoutManager;
-        mLayoutManager = new GridLayoutManager(getActivity(), 2);
-        recyclerView.setLayoutManager(mLayoutManager);
+        final ListView myList = rootView.findViewById(R.id.listOffered);
 
         wishRef.orderByChild("object_offered").equalTo(true).addValueEventListener(new ValueEventListener() {
             @Override
@@ -62,13 +59,13 @@ public class Tab2_Offered extends Fragment {
                 }
 
                 // TODO creating adapter
-            //    adapter = new WishAdapter(getActivity(), wishList);
+                adapter = new WishAdapter(getActivity(), wishList);
                 if(wishList.size() > 0){
                     //   mBeMyFirst.setVisibility(View.GONE);
                 }
 
-                //adding adapter to recyclerview
-             //   recyclerView.setAdapter(adapter);
+                myList.setAdapter(adapter);
+
             }
 
             @Override

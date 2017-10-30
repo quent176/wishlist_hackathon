@@ -3,11 +3,13 @@ package fr.wcs.wishlisthackathon;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -18,78 +20,76 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 // import com.firebase.ui.storage.images.FirebaseImageLoader;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by wilder on 30/10/17.
  */
 
-public class WishAdapter extends RecyclerView.Adapter<WishAdapter.ViewHolder> {
+public class WishAdapter extends BaseAdapter {
 
     private Context context;
-    public static List<ObjectModel> myList;
-    public FirebaseStorage mStorage = FirebaseStorage.getInstance();
+    private ArrayList<ObjectModel> item;
 
-    public WishAdapter(Context context, List<ObjectModel> myList) {
-        this.myList = myList;
+    public WishAdapter(Context context, ArrayList<ObjectModel> item){
         this.context = context;
+        this.item = item;
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView textViewName;
-        public ImageView imageView;
-        public ProgressBar loadingProgressBar;
+    @Override
+    public int getCount() {
+        return item.size();
+    }
 
-        public ViewHolder(final View itemView) {
-            super(itemView);
+    @Override
+    public Object getItem(int i) {
+        return item.get(i);
+    }
 
+    @Override
+    public long getItemId(int i) {
+        return i;
+    }
+
+    @Override
+    public View getView(int i, View convertView, ViewGroup viewGroup) {
+//        final ViewHolder viewHolder;
+        if (convertView == null){
+            convertView = LayoutInflater.from(viewGroup.getContext())
+                    .inflate(R.layout.layout_item, viewGroup, false);
+//            viewHolder = new ViewHolder(convertView);
+//            convertView.setTag(viewHolder);
         }
+//        else {
+//            viewHolder = (ViewHolder) convertView.getTag();
+//        }
+
+        ObjectModel currentItem = (ObjectModel) getItem(i);
+
+        TextView textDescription= convertView.findViewById(R.id.textdescription);
+        ImageView imgItem= convertView.findViewById(R.id.imageItem);
+        textDescription.setText(currentItem.getObject_description());
+        Picasso.with(context).load(currentItem.getObject_image()).into(imgItem);
+
+
+        return convertView;
     }
 
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.layout_item, parent, false);
-
-        return new ViewHolder(v);
-    }
-
-    @Override
-    public void onBindViewHolder(WishAdapter.ViewHolder holder, int position) {
-        final ProgressBar progressBar = holder.loadingProgressBar;
-        progressBar.setVisibility(View.VISIBLE);
-        ObjectModel myObject = myList.get(position);
-        String upload = myObject.getObject_image();
-        StorageReference gsReference = mStorage.getReferenceFromUrl(upload);
-        /*
-        Glide.with(context)
-                .using(new FirebaseImageLoader())
-                .load(gsReference)
-                .listener(new RequestListener<StorageReference, GlideDrawable>() {
-                    @Override
-                    public boolean onException(Exception e, StorageReference model, Target<GlideDrawable> target, boolean isFirstResource) {
-                        progressBar.setVisibility(View.GONE);
-                        Log.d("tag", "fail loading Image");
-                        return false;
-                    }
-
-                    @Override
-                    public boolean onResourceReady(GlideDrawable resource, StorageReference model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                        progressBar.setVisibility(View.GONE);
-                        return false;
-                    }
-                })
-                //TODO Import image .placeholder(R.drawable.placeholder)
-                .into(holder.imageView);
-                */
-    }
-
-    @Override
-    public int getItemCount() {
-        return myList.size();
-    }
+//    private class ViewHolder {
+//        TextView textDescription;
+//        ImageView imgItem;
+//
+//
+//        public ViewHolder(View view) {
+//            textDescription = view.findViewById(R.id.textdescription);
+//            imgItem = view.findViewById(R.id.imageItem);
+//
+//        }
+//    }
 }
