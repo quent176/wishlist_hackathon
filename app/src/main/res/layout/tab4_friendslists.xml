@@ -1,10 +1,36 @@
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
+    android:id="@+id/LinearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="fr.wcs.wishlisthackathon.WishActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteSearchUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:completionHintView="@layout/search_box"
+        android:completionThreshold="1"
+        android:hint="Rechercher un ami"
+        android:singleLine="true"
+        android:textColorHint="@color/colorPrimaryDark"/>
+
+    <Button
+        android:id="@+id/buttonSearchFriend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Recherche"/>
+
+    <ListView
+        android:id="@+id/listViewSearchFriends"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

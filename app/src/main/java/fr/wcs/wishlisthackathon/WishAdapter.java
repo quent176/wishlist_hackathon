@@ -70,7 +70,7 @@ public class WishAdapter extends BaseAdapter {
         TextView textDescription= convertView.findViewById(R.id.textdescription);
         ImageView imgItem= convertView.findViewById(R.id.imageItem);
         textDescription.setText(currentItem.getObject_description());
-        Picasso.with(context).load(currentItem.getObject_image()).into(imgItem);
+        Picasso.with(context).load(currentItem.getObject_image()).resize(450,450).into(imgItem);
 
         return convertView;
     }

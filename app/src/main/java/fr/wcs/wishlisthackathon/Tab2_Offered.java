@@ -36,7 +36,6 @@ public class Tab2_Offered extends Fragment {
 
         View rootView = inflater.inflate(tab2_offered, container, false);
 
-
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         userId = sharedPreferences.getString("mUserId", userId);
@@ -68,8 +67,6 @@ public class Tab2_Offered extends Fragment {
 
             }
         });
-        ImageView testPicasso = (ImageView) rootView.findViewById(R.id.imageViewTest1);
-        Picasso.with(getContext()).load("http://i.imgur.com/DvpvklR.png").into(testPicasso);
 
         return rootView;
     }
