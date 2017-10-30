@@ -15,6 +15,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 import static fr.wcs.wishlisthackathon.R.layout.tab2_offered;
 import static fr.wcs.wishlisthackathon.WishActivity.wishRef;
@@ -32,6 +35,7 @@ public class Tab2_Offered extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(tab2_offered, container, false);
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -58,13 +62,13 @@ public class Tab2_Offered extends Fragment {
                 }
 
                 // TODO creating adapter
-                adapter = new WishAdapter(getActivity(), wishList);
+            //    adapter = new WishAdapter(getActivity(), wishList);
                 if(wishList.size() > 0){
                     //   mBeMyFirst.setVisibility(View.GONE);
                 }
 
                 //adding adapter to recyclerview
-                recyclerView.setAdapter(adapter);
+             //   recyclerView.setAdapter(adapter);
             }
 
             @Override
@@ -72,6 +76,8 @@ public class Tab2_Offered extends Fragment {
 
             }
         });
+        ImageView testPicasso = (ImageView) rootView.findViewById(R.id.imageViewTest1);
+        Picasso.with(getContext()).load("http://i.imgur.com/DvpvklR.png").into(testPicasso);
 
         return rootView;
     }

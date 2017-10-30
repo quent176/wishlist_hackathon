@@ -6,6 +6,8 @@ package fr.wcs.wishlisthackathon;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -67,13 +69,13 @@ public class Tab1_Wishes extends Fragment {
                 }
 
                 // TODO creating adapter
-                adapter = new WishAdapter(getActivity(), wishList);
+              //  adapter = new WishAdapter(getActivity(), wishList);
                 if(wishList.size() > 0){
                  //   mBeMyFirst.setVisibility(View.GONE);
                 }
 
                 //adding adapter to recyclerview
-                recyclerView.setAdapter(adapter);
+              //  recyclerView.setAdapter(adapter);
             }
 
             @Override
@@ -82,6 +84,15 @@ public class Tab1_Wishes extends Fragment {
             }
         });
 
+
+        // Floating Button
+        FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), AddWishActivity.class));
+            }
+        });
 
         return rootView;
 
