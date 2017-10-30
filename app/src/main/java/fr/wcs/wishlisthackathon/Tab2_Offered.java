@@ -1,6 +1,8 @@
 package fr.wcs.wishlisthackathon;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,14 +27,16 @@ import static fr.wcs.wishlisthackathon.WishActivity.wishRef;
 public class Tab2_Offered extends Fragment {
 
     private RecyclerView.Adapter adapter;
+    String userId= "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(tab2_offered, container, false);
 
-        // TODO récupérer le user id
-        final String userId = "bibi";
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
+        userId = sharedPreferences.getString("mUserId", userId);
 
         // Recycler View
         final RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView2);

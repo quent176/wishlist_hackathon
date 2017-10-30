@@ -17,7 +17,7 @@ public class WishActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     public static FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
-    public static DatabaseReference wishRef = mDatabase.getReference("Objects");
+    public static DatabaseReference wishRef = mDatabase.getReference("Object");
 
 
 

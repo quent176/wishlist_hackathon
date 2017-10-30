@@ -4,10 +4,13 @@ package fr.wcs.wishlisthackathon;
  * Created by apprenti on 10/30/17.
  */
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,9 +36,6 @@ public class Tab1_Wishes extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(tab1_wishes, container, false);
 
-        // TODO récupérer le user id
-        String userId = "bibi";
-
         // Recycler View
         final RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView1);
         recyclerView.setHasFixedSize(true);
@@ -44,14 +44,26 @@ public class Tab1_Wishes extends Fragment {
         mLayoutManager = new GridLayoutManager(getActivity(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
 
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String userId= "";
+        userId = sharedPreferences.getString("mUserId", userId);
+        Log.e("WISHES",userId );
+
         wishRef.orderByChild("object_user_id").equalTo(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.e("WISHES", "caca" );
+
                 ArrayList<ObjectModel> wishList = new ArrayList<>();
-                for (DataSnapshot photoSnapshot : dataSnapshot.getChildren()){
-                    ObjectModel myObjectModel = photoSnapshot.getValue(ObjectModel.class);
+
+                for (DataSnapshot data : dataSnapshot.getChildren()){
+
+                    ObjectModel myObjectModel = data.getValue(ObjectModel.class);
+                    Log.e("WISHES",myObjectModel.getObject_description() );
+                    Log.e("WISHES", "prout" );
 
                     wishList.add(0, myObjectModel);
+                    Log.e("WISHES",String.valueOf(wishList.size()) );
                 }
 
                 // TODO creating adapter
