@@ -19,4 +19,13 @@
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintTop_creator="1" />
 
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteSearchUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:completionHintView="@layout/search_box"
+        android:completionThreshold="1"
+        android:hint="Rechercher un ami"
+        android:textColorHint="@color/colorPrimaryDark"/>
+
 </android.support.constraint.ConstraintLayout>
