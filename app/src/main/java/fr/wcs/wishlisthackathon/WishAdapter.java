@@ -13,12 +13,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+// import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.firebase.ui.storage.images.FirebaseImageLoader;
+// import com.firebase.ui.storage.images.FirebaseImageLoader;
 
 
 import java.util.List;
@@ -65,6 +65,7 @@ public class WishAdapter extends RecyclerView.Adapter<WishAdapter.ViewHolder> {
         ObjectModel myObject = myList.get(position);
         String upload = myObject.getObject_image();
         StorageReference gsReference = mStorage.getReferenceFromUrl(upload);
+        /*
         Glide.with(context)
                 .using(new FirebaseImageLoader())
                 .load(gsReference)
@@ -84,6 +85,7 @@ public class WishAdapter extends RecyclerView.Adapter<WishAdapter.ViewHolder> {
                 })
                 //TODO Import image .placeholder(R.drawable.placeholder)
                 .into(holder.imageView);
+                */
     }
 
     @Override
