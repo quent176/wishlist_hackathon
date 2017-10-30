@@ -22,9 +22,9 @@ public class WishActivity extends AppCompatActivity {
     public static FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
     public static DatabaseReference wishRef = mDatabase.getReference("Object");
 
-
     ImageView share;
-    String[] tabsTitles = new String[] {"Ma liste de souhaits", "Mes cadeaux offerts", "Mes cadeaux à offrir"};
+    String[] tabsTitles = new String[] {"Ma liste de souhaits", "Mes cadeaux offerts",
+            "Mes cadeaux à offrir", "Les listes de mes amis"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +92,9 @@ public class WishActivity extends AppCompatActivity {
                 case 2 :
                     Tab3_ToOffer tab3 = new Tab3_ToOffer();
                     return tab3;
+                case 3 :
+                    Tab4_FriendsLists tab4 = new Tab4_FriendsLists();
+                    return tab4;
                 default:
                     return null;
             }
@@ -99,8 +102,7 @@ public class WishActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 3;
+            return 4;
         }
 
         @Override
@@ -112,6 +114,8 @@ public class WishActivity extends AppCompatActivity {
                     return "OFFERTS";
                 case 2:
                     return "OFFRIR";
+                case 3:
+                    return "AMIS";
             }
             return null;
         }
