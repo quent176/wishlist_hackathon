@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/santaclaus"
@@ -21,9 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".WishActivity"
             android:label="@string/WishActivityTitle"
+            android:windowSoftInputMode="adjustResize"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
         <activity
@@ -31,9 +34,11 @@
             android:label="AddWishActivity"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait"/>
+
         <activity
             android:name=".AddWishActivity_PopUp"
             android:label="ProfilePopUp"
+            android:windowSoftInputMode="adjustResize"
             android:theme="@style/AppTheme.PopUp"
             android:screenOrientation="portrait"/>
         <activity android:name=".ModifyActivity">

@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,23 +19,14 @@ import static fr.wcs.wishlisthackathon.R.layout.tab3_tooffer;
 import static fr.wcs.wishlisthackathon.WishActivity.wishRef;
 
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.ListView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-
-import java.util.ArrayList;
-
-import static fr.wcs.wishlisthackathon.R.layout.tab3_tooffer;
+import com.squareup.picasso.Picasso;
 
 public class Tab3_ToOffer extends Fragment {
 
@@ -45,15 +34,19 @@ public class Tab3_ToOffer extends Fragment {
     private WishAdapter adapter;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mUsersDatabaseReference;
+    private DatabaseReference mObjectDatabaseReference;
 
     private ArrayAdapter<String> usersAdapter = null;
     private AutoCompleteTextView autoCompleteSearchUsers;
     private ArrayList<String> listUsers = new ArrayList<>();
 
+    private String friendSearched;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(tab3_tooffer, container, false);
+        final AutoCompleteTextView SearchBarUsers = (AutoCompleteTextView) rootView.findViewById(R.id.autoCompleteSearchUsers);
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String userId= "";
@@ -98,7 +91,6 @@ public class Tab3_ToOffer extends Fragment {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     User myUser = data.getValue(User.class);
                     listUsers.add(myUser.getUser_name());
-                    Log.d("TAG", myUser.getUser_name());
                 }
                 usersAdapter = new ArrayAdapter<String>(getActivity(), R.layout.search_box, R.id.tvHintCompletion, listUsers);
                 autoCompleteSearchUsers = (AutoCompleteTextView) rootView.findViewById(R.id.autoCompleteSearchUsers);
@@ -110,6 +102,39 @@ public class Tab3_ToOffer extends Fragment {
 
             }
         });
+
+        Button searchButton = (Button) rootView.findViewById(R.id.button2);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                friendSearched = SearchBarUsers.getText().toString();
+                Log.d("TAG", friendSearched);
+
+                mObjectDatabaseReference = mDatabase.getReference().child("Object");
+                mObjectDatabaseReference.orderByChild("object_user_name").equalTo(friendSearched)
+                        .addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                                    ObjectModel wish = data.getValue(ObjectModel.class);
+
+  //                                  Picasso.with(getContext()).load(wish.getObject_image()).into(imageTest);
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+            }
+        });
+
+
+
 
         return rootView;
     }

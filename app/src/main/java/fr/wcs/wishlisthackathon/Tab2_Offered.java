@@ -24,10 +24,6 @@ import static fr.wcs.wishlisthackathon.R.layout.tab2_offered;
 import static fr.wcs.wishlisthackathon.WishActivity.wishRef;
 
 
-/**
- * Created by apprenti on 10/30/17.
- */
-
 public class Tab2_Offered extends Fragment {
 
     private WishAdapter adapter;
