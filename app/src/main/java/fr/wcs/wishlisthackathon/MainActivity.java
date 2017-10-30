@@ -91,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
                                         editor.putString("mUserId", mUserId);
                                         editor.apply();
 
+                                        Intent intent = new Intent(getApplicationContext(), WishActivity.class);
+                                        startActivity(intent);
+
                                     } else {
                                         // Si le mot de passe ou le pseudo ne concordent pas
                                         Toast.makeText(getApplicationContext(), R.string.error_password, Toast.LENGTH_SHORT).show();
