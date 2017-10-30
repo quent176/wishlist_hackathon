@@ -5,28 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fr.wcs.wishlisthackathon.MainActivity">
+    <!--android:background="@drawable/snow1"-->
 
     <EditText
+        style="@style/connexion_text"
         android:id="@+id/connexionUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/pseudo"
         android:inputType="text"
-        android:maxLength="15"
         app:layout_constraintBottom_toTopOf="@+id/connexionUserPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
+        style="@style/connexion_text"
         android:id="@+id/connexionUserPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:maxLength="15"
         app:layout_constraintBottom_toTopOf="@+id/buttonConnexionSend"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/connexionUserName" />
 
@@ -37,6 +39,7 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonConnexionSend" />
 
@@ -47,7 +50,21 @@
         android:text="@string/connexion"
         app:layout_constraintBottom_toTopOf="@+id/simpleProgressBar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/connexionUserPassword" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="234dp"
+        android:layout_height="71dp"
+        android:gravity="center"
+        android:textSize="50sp"
+        android:text="WishList"
+        app:layout_constraintBottom_toTopOf="@+id/connexionUserName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

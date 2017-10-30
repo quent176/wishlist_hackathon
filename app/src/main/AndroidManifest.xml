@@ -11,7 +11,10 @@
         android:roundIcon="@drawable/santaclaus"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,8 +24,13 @@
         <activity
             android:name=".WishActivity"
             android:label="@string/WishActivityTitle"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AddWishActivity" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AddWishActivity"
+            android:label="AddWishActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".AddWishActivity_PopUp"
             android:label="ProfilePopUp"
