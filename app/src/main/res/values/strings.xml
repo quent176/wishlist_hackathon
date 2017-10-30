@@ -5,5 +5,11 @@
     <string name="connexion">Connexion</string>
     <string name="pseudo">Pseudo</string>
     <string name="password">Mot de passe</string>
+    <string name="error_password">Pseudo déjà utilisé ou mot de passe erroné</string>
+    <string name="error_fill">Tu dois remplir tous les champs demandés</string>
+    <string name="created_user">Bienvenue</string>
+    <string name="title_activity_wish">WishActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 
 </resources>

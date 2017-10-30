@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "999440159254-39vblfrivi149rfqds8s27brrromltq0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.wcs.wishlisthackathon",
+            "certificate_hash": "cf3000441af4b4f0e0704b7991af35e273d680ca"
+          }
+        },
+        {
           "client_id": "999440159254-s3ahvd9eeh4frbof194pmbrqq3afre76.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
