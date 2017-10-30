@@ -1,30 +1,37 @@
 package fr.wcs.wishlisthackathon;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.ImageButton;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import static android.content.ContentValues.TAG;
 import static fr.wcs.wishlisthackathon.R.layout.tab3_tooffer;
+import static fr.wcs.wishlisthackathon.WishActivity.wishRef;
+
+import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.ListView;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 public class Tab3_ToOffer extends Fragment {
 
+
+    private WishAdapter adapter;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mUsersDatabaseReference;
     private DatabaseReference mObjectDatabaseReference;
@@ -38,9 +45,39 @@ public class Tab3_ToOffer extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         final View rootView = inflater.inflate(tab3_tooffer, container, false);
         final AutoCompleteTextView SearchBarUsers = (AutoCompleteTextView) rootView.findViewById(R.id.autoCompleteSearchUsers);
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String userId= "";
+        userId = sharedPreferences.getString("mUserId", userId);
+
+        final ListView myList = rootView.findViewById(R.id.listOffrir);
+
+        wishRef.orderByChild("pigeon_user_id").equalTo(userId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<ObjectModel> wishList = new ArrayList<>();
+                for (DataSnapshot photoSnapshot : dataSnapshot.getChildren()){
+                    ObjectModel myObjectModel = photoSnapshot.getValue(ObjectModel.class);
+                    wishList.add(0, myObjectModel);
+                }
+
+                // TODO creating adapter
+                adapter = new WishAdapter(getActivity(), wishList);
+                if(wishList.size() > 0){
+                    //   mBeMyFirst.setVisibility(View.GONE);
+                }
+                myList.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
         //Initialize Firebase components
         mDatabase = FirebaseDatabase.getInstance();
@@ -55,7 +92,6 @@ public class Tab3_ToOffer extends Fragment {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     User myUser = data.getValue(User.class);
                     listUsers.add(myUser.getUser_name());
-                    Log.d("TAG", myUser.getUser_name());
                 }
                 usersAdapter = new ArrayAdapter<String>(getActivity(), R.layout.search_box, R.id.tvHintCompletion, listUsers);
                 autoCompleteSearchUsers = (AutoCompleteTextView) rootView.findViewById(R.id.autoCompleteSearchUsers);
@@ -83,9 +119,8 @@ public class Tab3_ToOffer extends Fragment {
 
                                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                                     ObjectModel wish = data.getValue(ObjectModel.class);
-                                    wish.getObject_image();
-                                    ImageButton imageTest = (ImageButton) rootView.findViewById(R.id.imageButton1);
-                                    Picasso.with(getContext()).load(wish.getObject_image()).into(imageTest);
+
+  //                                  Picasso.with(getContext()).load(wish.getObject_image()).into(imageTest);
                                 }
 
                             }

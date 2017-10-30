@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final EditText editTextUserName = findViewById(R.id.connexionUserName);
-        final EditText editTextUserPassword = findViewById(R.id.connexionUserPassword);
-        final ProgressBar simpleProgressBar = findViewById(R.id.simpleProgressBar);
-        Button buttonSend = findViewById(R.id.buttonConnexionSend);
+        final EditText editTextUserName = (EditText) findViewById(R.id.connexionUserName);
+        final EditText editTextUserPassword = (EditText) findViewById(R.id.connexionUserPassword);
+        final ProgressBar simpleProgressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
+        Button buttonSend = (Button) findViewById(R.id.buttonConnexionSend);
 
         // On recupere les Shared  Preferences
         final SharedPreferences sharedpreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
