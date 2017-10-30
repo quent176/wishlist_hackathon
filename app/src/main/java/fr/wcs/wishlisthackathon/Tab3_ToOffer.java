@@ -60,7 +60,6 @@ public class Tab3_ToOffer extends Fragment {
             }
         });
 
-
         return rootView;
     }
 }

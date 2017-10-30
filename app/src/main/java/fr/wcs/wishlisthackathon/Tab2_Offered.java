@@ -23,8 +23,8 @@ public class Tab2_Offered extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(tab2_offered, container, false);
-        ImageView testPicasso = (ImageView) rootView.findViewById(R.id.imageViewTest1);
 
+        ImageView testPicasso = (ImageView) rootView.findViewById(R.id.imageViewTest1);
         Picasso.with(getContext()).load("http://i.imgur.com/DvpvklR.png").into(testPicasso);
 
         return rootView;

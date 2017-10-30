@@ -6,9 +6,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/santaclaus"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/santaclaus"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -20,8 +20,14 @@
         </activity>
         <activity
             android:name=".WishActivity"
-            android:label="@string/title_activity_wish"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="@string/WishActivityTitle"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AddWishActivity" />
+        <activity
+            android:name=".AddWishActivity_PopUp"
+            android:label="ProfilePopUp"
+            android:theme="@style/AppTheme.PopUp"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
