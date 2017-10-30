@@ -12,4 +12,22 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
+    // AddWish Page
+    <string name="description">Description</string>
+    <string name="lien">Lien</string>
+    <string name="annuler">Annuler</string>
+    <string name="creer">Créer</string>
+
+    // AddWish PopUp Page
+    <string name="valider">Valider et continuer</string>
+    <string name="choisir_depuis_nla_gallerie">GALERIE\nPHOTO</string>
+    <string name="nouvelle_photo">APPAREIL\nPHOTO</string>
+    <string name="upload_ta_photo">GALERIE\nPHOTO</string>
+    <string name="prendre_nouvelle_photo">APPAREIL\nPHOTO</string>
+    <string name="envoi_photo">ENVOI\nPHOTO</string>
+    <string name="toast_error_profile">Tu es déjà sur la page Profil</string>
+    <string name="toast_error_upload">Echec de l\'upload</string>
+    <string name="toast_upload_success">Upload réussi !</string>
+    <string name="progressdialog_upload">Uploading ...</string>
+
 </resources>

@@ -19,7 +19,13 @@
         <activity
             android:name=".WishActivity"
             android:label="@string/title_activity_wish"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AddWishActivity" />
+        <activity
+            android:name=".AddWishActivity_PopUp"
+            android:label="ProfilePopUp"
+            android:theme="@style/AppTheme.PopUp"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
