@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private String mUserId = "UserKey";
     private String mEncrypt = "encrypt";
     private boolean auth = false;
+    ProgressBar simpleProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText editTextUserName = (EditText) findViewById(R.id.connexionUserName);
         final EditText editTextUserPassword = (EditText) findViewById(R.id.connexionUserPassword);
-        final ProgressBar simpleProgressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
+        simpleProgressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
         simpleProgressBar.getIndeterminateDrawable().setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY);
         Button buttonSend = (Button) findViewById(R.id.buttonConnexionSend);
 
