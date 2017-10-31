@@ -7,9 +7,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/santaclaus"
+        android:icon="@drawable/santaclaus2"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/santaclaus"
+        android:roundIcon="@drawable/santaclaus2"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
