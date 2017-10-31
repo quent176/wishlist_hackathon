@@ -1,9 +1,11 @@
 package fr.wcs.wishlisthackathon;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -84,14 +87,39 @@ public class FriendsListAdapter extends BaseAdapter {
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
                 ImageView buttonOffer = (ImageView) view.findViewById(R.id.buttonOffer);
                 buttonOffer.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mObjectDatabaseReference = mDatabase.getReference().child("Object").child(object_id);
-                        mObjectDatabaseReference.child("object_offered").setValue(true);
-                        mObjectDatabaseReference.child("pigeon_user_id").setValue(userId);
+                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(view.getContext());
+
+                        // Setting Dialog Title
+                        alertDialog.setTitle("Offrir un super cadeau");
+
+                        // Setting Dialog Message
+                        alertDialog.setMessage("Voulez-vous vraiment payer un tel cadeau à " + item.get(i).getObject_user_name() + " ?");
+                        // Setting Positive "Yes" Button
+                        alertDialog.setPositiveButton("Oui, j'ai pitié", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int which) {
+                                mObjectDatabaseReference = mDatabase.getReference().child("Object").child(object_id);
+                                mObjectDatabaseReference.child("object_offered").setValue(true);
+                                mObjectDatabaseReference.child("pigeon_user_id").setValue(userId);
+                                Toast.makeText(view.getContext(), "Tant pis, je mangerai des pates", Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                        // Setting Negative "NO" Button
+                        alertDialog.setNegativeButton("En fait, non, j'acheterai un bout de pain", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Write your code here to invoke NO event
+                                Toast.makeText(view.getContext(), "Bon choix, il ne méritait pas", Toast.LENGTH_LONG).show();
+                                dialog.cancel();
+                            }
+                        });
+
+                        // Showing Alert Message
+                        alertDialog.show();
                     }
                 });
             }
