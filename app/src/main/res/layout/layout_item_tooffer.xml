@@ -35,7 +35,7 @@
         android:layout_width="0sp"
         android:layout_height="200dp"
         android:layout_weight="1"
-        android:background="@color/colorAccent"
+        android:background="@color/colorWhite"
         android:clickable="false"/>
 
 </LinearLayout>
