@@ -17,8 +17,7 @@
         android:padding="10dp"
         android:text="TextView"
         android:textColor="#000"
-        android:textSize="20sp"
-        />
+        android:textSize="20sp"/>
 
     <ImageButton
         android:id="@+id/imageItem"

@@ -99,8 +99,13 @@ public class AddWishActivity_PopUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if (!inputURL.getText().toString().equals("")){
+                    Picasso.with(getApplicationContext()).load(inputURL.getText().toString()).error(R.drawable.santa_claus).into(wishImageView);
+                    startActivity(new Intent(getApplicationContext(), AddWishActivity.class));
+                }
+
                 // PICK IMAGE REQUEST = photo de la gallery
-                if (filePath != null) {
+             else if (filePath != null) {
                     pd.show();
                     StorageReference storageReference = FirebaseStorage.getInstance().getReference("Photos").child(filePath.getLastPathSegment());
 
