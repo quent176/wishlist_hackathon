@@ -7,7 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="fr.wcs.wishlisthackathon.WishActivity">
+    tools:context="fr.wcs.wishlisthackathon.WishActivity"
+    style="@style/background">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -45,7 +46,7 @@
 
     <android.support.v4.view.ViewPager
         android:id="@+id/container"
-        android:background="@color/colorAccent"
+        style="@style/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />

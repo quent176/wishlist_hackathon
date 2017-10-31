@@ -6,29 +6,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="fr.wcs.wishlisthackathon.WishActivity">
+    tools:context="fr.wcs.wishlisthackathon.WishActivity"
+    style="@style/background">
 
     <AutoCompleteTextView
+        style="@style/hint"
         android:id="@+id/autoCompleteSearchUsers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:completionHintView="@layout/search_box"
         android:completionThreshold="1"
-        android:hint="Rechercher un ami"
+        android:hint="@string/rechercher_un_ami"
         android:singleLine="true"
-        android:textColorHint="@color/colorPrimaryDark"/>
+        android:layout_margin="5dp"/>
 
     <Button
+        style="@style/button"
         android:id="@+id/buttonSearchFriend"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Recherche"/>
+        android:text="@string/recherche"
+        android:layout_margin="5dp"/>
 
     <ListView
+        style="@style/text"
         android:id="@+id/listViewSearchFriends"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

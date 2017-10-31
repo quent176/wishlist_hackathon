@@ -4,27 +4,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
     android:orientation="horizontal"
-    android:padding="10dp">
+    style="@style/background">
 
+    <LinearLayout
+        android:layout_width="150sp"
+        android:layout_height="200sp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textdescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:padding="10dp"
-        android:text="TextView"
-        android:textColor="#000"
-        android:textSize="20sp"
-        />
+        <TextView
+            style="@style/text"
+            android:id="@+id/textdescription"
+            android:layout_weight="1"
+            android:text="@string/textview" />
+
+    </LinearLayout>
 
     <ImageButton
         android:id="@+id/imageItem"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_weight="1"
-        android:background="@color/colorTransparent"
+        android:background="@color/colorAccent"
         android:clickable="false"/>
+
 </LinearLayout>

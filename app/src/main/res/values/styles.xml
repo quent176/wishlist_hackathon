@@ -39,7 +39,7 @@
 
     <style name="button">
         <item name="android:background">@drawable/button_shape</item>
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorWhite</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_gravity">center</item>
@@ -50,6 +50,17 @@
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="hint">
+        <item name="android:textColor">@color/colorAccent2</item>
+        <item name="android:textColorHint">@color/colorAccent2</item>
+        <item name="android:backgroundTint">@color/colorAccent2</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">20sp</item>
@@ -57,6 +68,5 @@
 
     <style name="background">
         <item name="android:background">@color/colorAccent</item>
-        <item name="android:textColor">@color/colorWhite</item>
     </style>
 </resources>

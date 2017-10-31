@@ -5,14 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:padding="10dp"
     style="@style/background">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="200sp"
-        android:orientation="vertical"
-        android:padding="5dp">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textdescription"
@@ -23,11 +21,12 @@
             style="@style/text"/>
 
         <ImageView
+            android:background="@drawable/present"
             android:id="@+id/buttonOffer"
+            android:layout_gravity="center"
             android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:text="@string/offrir"
-            style="@style/button"/>
+            android:layout_height="100dp"
+            android:text="@string/offrir"/>
 
     </LinearLayout>
 
