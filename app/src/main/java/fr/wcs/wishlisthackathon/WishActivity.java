@@ -23,8 +23,8 @@ public class WishActivity extends AppCompatActivity {
     public static DatabaseReference wishRef = mDatabase.getReference("Object");
 
     ImageView share;
-    String[] tabsTitles = new String[] {"Ma liste de souhaits", "Mes cadeaux offerts",
-            "Mes cadeaux à offrir", "Les listes de mes amis"};
+    String[] tabsTitles = new String[] {"Ma liste de souhaits", "Les cadeaux que je vais recevoir",
+            "Les cadeaux à offrir à mes amis", "La liste de mes amis"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -98,13 +98,13 @@ public class ModifyActivity extends AppCompatActivity {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(ModifyActivity.this);
 
                 // Setting Dialog Title
-                alertDialog.setTitle("Confirm Delete...");
+                alertDialog.setTitle("Supprimer un voeu");
 
                 // Setting Dialog Message
-                alertDialog.setMessage("Are you sure you want delete this?");
+                alertDialog.setMessage("Voulez-vous vraiment supprimer ce joli cadeau ? ");
 
                 // Setting Positive "Yes" Button
-                alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                alertDialog.setPositiveButton("Oui, j'ai trouvé mieux et plus cher", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int which) {
 
                         mObjectDatabaseReference.child(mUid).removeValue();
@@ -113,10 +113,10 @@ public class ModifyActivity extends AppCompatActivity {
                 });
 
                 // Setting Negative "NO" Button
-                alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                alertDialog.setNegativeButton("En fait, non", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // Write your code here to invoke NO event
-                        Toast.makeText(getApplicationContext(), "You clicked on NO", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Ok il reste dans la liste alors", Toast.LENGTH_SHORT).show();
                         dialog.cancel();
                     }
                 });
