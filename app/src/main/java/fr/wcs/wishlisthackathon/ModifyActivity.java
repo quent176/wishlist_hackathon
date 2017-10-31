@@ -1,6 +1,9 @@
 package fr.wcs.wishlisthackathon;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -86,6 +89,45 @@ public class ModifyActivity extends AppCompatActivity {
                 Toast.makeText(ModifyActivity.this, "Nouvelle description enregistrée",Toast.LENGTH_SHORT).show();
             }
         });
+
+        Button buttonDelete = (Button) findViewById(R.id.buttonDelete);
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(ModifyActivity.this);
+
+                // Setting Dialog Title
+                alertDialog.setTitle("Confirm Delete...");
+
+                // Setting Dialog Message
+                alertDialog.setMessage("Are you sure you want delete this?");
+
+                // Setting Positive "Yes" Button
+                alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int which) {
+
+                        mObjectDatabaseReference.child(mUid).removeValue();
+                        startActivity(new Intent(getApplicationContext(), WishActivity.class));
+                    }
+                });
+
+                // Setting Negative "NO" Button
+                alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Write your code here to invoke NO event
+                        Toast.makeText(getApplicationContext(), "You clicked on NO", Toast.LENGTH_SHORT).show();
+                        dialog.cancel();
+                    }
+                });
+
+                // Showing Alert Message
+                alertDialog.show();
+
+            }
+        });
+
+
 
         Button buttonCancel = (Button) findViewById(R.id.cancel);
         buttonCancel.setOnClickListener(new View.OnClickListener() {

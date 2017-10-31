@@ -48,7 +48,7 @@ public class AddWishActivity_PopUp extends AppCompatActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*.8),(int)(height*.75));
+        getWindow().setLayout((int) (width * .8), (int) (height * .75));
 
         takePhoto = findViewById(R.id.takePhoto);
         chooseImg = findViewById(R.id.chooseImg);
@@ -100,7 +100,7 @@ public class AddWishActivity_PopUp extends AppCompatActivity {
             public void onClick(View v) {
 
                 // PICK IMAGE REQUEST = photo de la gallery
-                if(filePath != null) {
+                if (filePath != null) {
                     pd.show();
                     StorageReference storageReference = FirebaseStorage.getInstance().getReference("Photos").child(filePath.getLastPathSegment());
 
