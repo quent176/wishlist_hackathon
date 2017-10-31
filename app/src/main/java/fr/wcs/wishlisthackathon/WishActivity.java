@@ -113,7 +113,7 @@ public class WishActivity extends AppCompatActivity {
                 case 1:
                     return "OFFERTS";
                 case 2:
-                    return "OFFRIR";
+                    return "A OFFRIR";
                 case 3:
                     return "AMIS";
             }

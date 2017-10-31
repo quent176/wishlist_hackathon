@@ -66,7 +66,7 @@ public class ToOfferAdapter extends BaseAdapter {
         textDescription.setText(currentItem.getObject_description());
         Picasso.with(context).load(currentItem.getObject_image()).resize(450,450).into(imgItem);
         TextView textNameToOffer = convertView.findViewById(R.id.TextViewNameOfferTo);
-        textNameToOffer.setText("Pour : \n" +  currentItem.getObject_user_name());
+        textNameToOffer.setText("POUR : \n" +  currentItem.getObject_user_name());
 
         return convertView;
     }

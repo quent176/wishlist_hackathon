@@ -18,12 +18,6 @@
         android:completionThreshold="1"
         android:hint="@string/rechercher_un_ami"
         android:singleLine="true"
-
-        android:textColorHint="@color/colorPrimaryDark"
-        android:backgroundTint="@color/colorWhite"
-        android:textColor="@color/colorPrimaryDark"
-        android:background="@color/colorWhite"
-        android:textAlignment="center"
         android:layout_margin="5dp"/>
 
     <Button
