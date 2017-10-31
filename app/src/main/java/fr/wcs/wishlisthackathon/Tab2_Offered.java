@@ -49,9 +49,7 @@ public class Tab2_Offered extends Fragment {
                 }
 
                 adapter = new WishAdapter(getActivity(), wishList);
-
                 myList.setAdapter(adapter);
-
             }
 
             @Override

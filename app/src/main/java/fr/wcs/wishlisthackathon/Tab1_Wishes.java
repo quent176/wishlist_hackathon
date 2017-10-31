@@ -53,31 +53,11 @@ public class Tab1_Wishes extends Fragment {
                 for (DataSnapshot data : dataSnapshot.getChildren()){
 
                     ObjectModel myObjectModel = data.getValue(ObjectModel.class);
-                    Log.e("WISHES",myObjectModel.getObject_description() );
-                    Log.e("WISHES", "et un objet! un!" );
-
                     wishList.add(0, myObjectModel);
-                    Log.e("WISHES",String.valueOf(wishList.size()) );
                 }
 
                 adapter = new WishAdapter(getActivity(), wishList);
-
                 myList.setAdapter(adapter);
-                Log.e("WISHES", "adapter added" );
-
-                myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        ObjectModel item = wishList.get(i);
-                        Log.e("WISHESPROUT",item.getObject_description() );
-                        Log.e("WISHESPROUT","WISHESPROUT" );
-
-                        Intent intent = new Intent(getActivity(), ModifyActivity.class);
-                        intent.putExtra("objet", item);
-                        startActivity(intent);
-                    }
-                });
-
             }
 
             @Override

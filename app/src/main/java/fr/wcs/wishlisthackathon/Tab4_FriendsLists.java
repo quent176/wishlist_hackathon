@@ -89,12 +89,7 @@ public class Tab4_FriendsLists extends Fragment {
                                 }
 
                                 adapter = new WishAdapter(getActivity(), wishList);
-                                if (wishList.size() > 0) {
-                                    //   mBeMyFirst.setVisibility(View.GONE);
-                                }
-
                                 myList.setAdapter(adapter);
-
                             }
 
                             @Override
