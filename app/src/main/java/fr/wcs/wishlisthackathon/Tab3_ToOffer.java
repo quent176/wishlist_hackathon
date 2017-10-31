@@ -46,7 +46,6 @@ public class Tab3_ToOffer extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(tab3_tooffer, container, false);
-        final AutoCompleteTextView SearchBarUsers = (AutoCompleteTextView) rootView.findViewById(R.id.autoCompleteSearchUsers);
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String userId= "";
@@ -83,57 +82,6 @@ public class Tab3_ToOffer extends Fragment {
 
         //Get User on Firebase
         mUsersDatabaseReference = mDatabase.getReference().child("User");
-
-        mUsersDatabaseReference.orderByChild("user_name").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                listUsers.clear();
-                for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    User myUser = data.getValue(User.class);
-                    listUsers.add(myUser.getUser_name());
-                }
-                usersAdapter = new ArrayAdapter<String>(getActivity(), R.layout.search_box, R.id.tvHintCompletion, listUsers);
-                autoCompleteSearchUsers = (AutoCompleteTextView) rootView.findViewById(R.id.autoCompleteSearchUsers);
-                autoCompleteSearchUsers.setAdapter(usersAdapter);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-        Button searchButton = (Button) rootView.findViewById(R.id.button2);
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                friendSearched = SearchBarUsers.getText().toString();
-                Log.d("TAG", friendSearched);
-
-                mObjectDatabaseReference = mDatabase.getReference().child("Object");
-                mObjectDatabaseReference.orderByChild("object_user_name").equalTo(friendSearched)
-                        .addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                                for (DataSnapshot data : dataSnapshot.getChildren()) {
-                                    ObjectModel wish = data.getValue(ObjectModel.class);
-
-  //                                  Picasso.with(getContext()).load(wish.getObject_image()).into(imageTest);
-                                }
-
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
-                        });
-
-            }
-        });
-
-
 
 
         return rootView;

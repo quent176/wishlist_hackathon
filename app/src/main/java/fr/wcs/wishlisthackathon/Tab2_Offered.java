@@ -13,10 +13,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import android.widget.ImageView;
 import android.widget.ListView;
-
-import com.squareup.picasso.Picasso;
 
 import static fr.wcs.wishlisthackathon.R.layout.tab2_offered;
 import static fr.wcs.wishlisthackathon.WishActivity.wishRef;
@@ -33,7 +30,6 @@ public class Tab2_Offered extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(tab2_offered, container, false);
-
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
