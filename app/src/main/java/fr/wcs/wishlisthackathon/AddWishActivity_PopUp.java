@@ -15,6 +15,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 
@@ -57,6 +59,19 @@ public class AddWishActivity_PopUp extends AppCompatActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         mUserId = sharedPreferences.getString("mUserId", mUserId);
         Log.d("key", mUserId);
+
+        Button buttonAddLink = (Button) findViewById(R.id.addinternetlink);
+        final EditText inputURL = (EditText) findViewById(R.id.inputURL);
+
+        inputURL.setVisibility(View.GONE);
+
+        // Ne fonctionne pas
+        buttonAddLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                inputURL.setVisibility(View.VISIBLE);
+            }
+        });
 
         // Progress Dialog
         pd = new ProgressDialog(this);

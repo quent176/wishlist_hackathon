@@ -22,6 +22,7 @@ public class ModifyActivity extends AppCompatActivity {
     private FirebaseDatabase mDatabase;
     private DatabaseReference mObjectDatabaseReference;
     private String mUid;
+    ImageView wishImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,16 @@ public class ModifyActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+
+        // Lien PopUp
+        wishImage = findViewById(R.id.wishImage);
+        wishImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ModifyActivity.this, AddWishActivity_PopUp.class);
+                startActivity(intent);
             }
         });
 
