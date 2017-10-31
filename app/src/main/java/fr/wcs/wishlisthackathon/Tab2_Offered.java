@@ -4,8 +4,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +13,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import android.widget.ImageView;
 import android.widget.ListView;
-
-import com.squareup.picasso.Picasso;
 
 import static fr.wcs.wishlisthackathon.R.layout.tab2_offered;
 import static fr.wcs.wishlisthackathon.WishActivity.wishRef;
@@ -26,7 +21,7 @@ import static fr.wcs.wishlisthackathon.WishActivity.wishRef;
 
 public class Tab2_Offered extends Fragment {
 
-    private WishAdapter adapter;
+    private OfferedAdapter adapter;
 
     String userId= "";
 
@@ -53,13 +48,8 @@ public class Tab2_Offered extends Fragment {
                     }
                 }
 
-                adapter = new WishAdapter(getActivity(), wishList);
-                if(wishList.size() > 0){
-                    //   mBeMyFirst.setVisibility(View.GONE);
-                }
-
+                adapter = new OfferedAdapter(getActivity(), wishList);
                 myList.setAdapter(adapter);
-
             }
 
             @Override

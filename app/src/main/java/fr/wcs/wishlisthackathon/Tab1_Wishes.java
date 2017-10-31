@@ -53,21 +53,12 @@ public class Tab1_Wishes extends Fragment {
                 for (DataSnapshot data : dataSnapshot.getChildren()){
 
                     ObjectModel myObjectModel = data.getValue(ObjectModel.class);
-                    Log.e("WISHES",myObjectModel.getObject_description() );
-                    Log.e("WISHES", "et un objet! un!" );
-
                     wishList.add(0, myObjectModel);
-                    Log.e("WISHES",String.valueOf(wishList.size()) );
                 }
 
                 adapter = new WishAdapter(getActivity(), wishList);
-
                 myList.setAdapter(adapter);
-                Log.e("WISHES", "adapter added" );
-
             }
-
-
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
