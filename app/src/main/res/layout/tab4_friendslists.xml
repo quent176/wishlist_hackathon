@@ -16,7 +16,12 @@
         android:completionThreshold="1"
         android:hint="Rechercher un ami"
         android:singleLine="true"
-        android:textColorHint="@color/colorPrimaryDark"/>
+        android:textColorHint="@color/colorPrimaryDark"
+        android:backgroundTint="@color/colorWhite"
+        android:textColor="@color/colorPrimaryDark"
+        android:background="@color/colorWhite"
+        android:textAlignment="center"
+        android:layout_margin="10dp"/>
 
     <Button
         android:id="@+id/buttonSearchFriend"
