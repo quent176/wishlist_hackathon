@@ -63,6 +63,7 @@ public class AddWishActivity extends AppCompatActivity {
                 linkImage = findViewById(R.id.linkImage);
                 descriptionImageContent = descriptionImage.getText().toString();
                 linkImageContent = linkImage.getText().toString();
+                IMGURL = "https://img4.hostingpics.net/pics/881558santaclaus.jpg";
 
                 if (descriptionImage.getText().toString().equals("jouet")){
                     IMGURL = "https://www.boisetpoterie.com/boutique/images_produits/jouet-a-tire-grenouille-tambourin-z.png";
