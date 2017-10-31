@@ -14,8 +14,8 @@
         android:layout_height="40sp"/>
 
     <View
-        android:background="@color/colorAccent2"
-        android:backgroundTint="@color/colorAccent2"
+        android:background="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="2dp"/>
 
