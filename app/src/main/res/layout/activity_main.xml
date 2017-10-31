@@ -45,7 +45,6 @@
         style="@style/button"
         android:id="@+id/buttonConnexionSend"
         android:text="@string/connexion"
-        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toTopOf="@+id/simpleProgressBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
