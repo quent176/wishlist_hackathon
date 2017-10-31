@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,7 +53,7 @@ public class AddWishActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference("Object");
 
-        create = findViewById(R.id.create);
+        create = findViewById(R.id.buttonModify);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
