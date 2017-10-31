@@ -23,9 +23,10 @@
 
     <style name="connexion_text">
         <item name="android:background">@drawable/connexion_text_shape</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColorHint">@color/colorPrimary</item>
         <item name="android:maxLength">15</item>
         <item name="android:gravity">center</item>
-        <item name="android:textColorHint">@color/colorAccent</item>
     </style>
 
     <style name="connexion_title">
@@ -47,7 +48,7 @@
     </style>
 
     <style name="text">
-        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:gravity">center</item>
@@ -56,9 +57,9 @@
     </style>
 
     <style name="hint">
-        <item name="android:textColor">@color/colorAccent2</item>
-        <item name="android:textColorHint">@color/colorAccent2</item>
-        <item name="android:backgroundTint">@color/colorAccent2</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColorHint">@color/colorPrimary</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_gravity">center</item>
@@ -67,6 +68,6 @@
     </style>
 
     <style name="background">
-        <item name="android:background">@color/colorAccent</item>
+        <item name="android:background">@color/colorWhite</item>
     </style>
 </resources>
