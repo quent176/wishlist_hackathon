@@ -99,8 +99,8 @@ public class AddWishActivity_PopUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (!inputURL.getText().toString().equals("")){
-                    Picasso.with(getApplicationContext()).load(inputURL.getText().toString()).error(R.drawable.santa_claus).into(wishImageView);
+                if (inputURL.getText().toString().equals("jouet")){
+                    Picasso.with(getApplicationContext()).load("https://www.boisetpoterie.com/boutique/images_produits/jouet-a-tire-grenouille-tambourin-z.png").error(R.drawable.santa_claus).into(wishImageView);
                     startActivity(new Intent(getApplicationContext(), AddWishActivity.class));
                 }
 

@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 public class AddWishActivity extends AppCompatActivity {
 
@@ -19,7 +20,7 @@ public class AddWishActivity extends AppCompatActivity {
     EditText descriptionImage, linkImage;
     String descriptionImageContent, linkImageContent;
     Button cancel, create;
-    String mUserId, userName;
+    String mUserId, userName, IMGURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +64,22 @@ public class AddWishActivity extends AppCompatActivity {
                 descriptionImageContent = descriptionImage.getText().toString();
                 linkImageContent = linkImage.getText().toString();
 
-                ObjectModel objectModel = new ObjectModel(descriptionImageContent, linkImageContent, linkImageContent,
+                if (descriptionImage.getText().toString().equals("jouet")){
+                    IMGURL = "https://www.boisetpoterie.com/boutique/images_produits/jouet-a-tire-grenouille-tambourin-z.png";
+                    Picasso.with(getApplicationContext()).load(IMGURL).error(R.drawable.santa_claus).into(wishImage);
+                }
+
+                else if (descriptionImage.getText().toString().equals("DVD")){
+                    IMGURL = "https://arsenicetpetitesculottes.files.wordpress.com/2013/03/arsenic-song-of-ice-and-fire-got-george-r-r-martin-books.jpg";
+                    Picasso.with(getApplicationContext()).load(IMGURL).error(R.drawable.santa_claus).into(wishImage);
+                }
+
+                else if (descriptionImage.getText().toString().equals("nerf")){
+                    IMGURL = "https://i.ytimg.com/vi/9zIWQ9bFuXU/maxresdefault.jpg";
+                    Picasso.with(getApplicationContext()).load(IMGURL).error(R.drawable.santa_claus).into(wishImage);
+                }
+
+                ObjectModel objectModel = new ObjectModel(descriptionImageContent, IMGURL, linkImageContent,
                         false, mUserId, userName, "null");
 
                 myRef.push().setValue(objectModel);
