@@ -73,34 +73,33 @@ public class Tab4_FriendsLists extends Fragment {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                friendSearched = SearchBarUsers.getText().toString();
+            friendSearched = SearchBarUsers.getText().toString();
 
-                mObjectDatabaseReference = mDatabase.getReference().child("Object");
-                mObjectDatabaseReference.orderByChild("object_user_name").equalTo(friendSearched)
-                        .addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                ArrayList<ObjectModel> wishList = new ArrayList<>();
-                                for (DataSnapshot data : dataSnapshot.getChildren()) {
-                                    ObjectModel wish = data.getValue(ObjectModel.class);
-                                    if (!wish.isObject_offered()){
-                                        wishList.add(0, wish);
-                                    }
-                                }
-
-                                adapter = new FriendsListAdapter(getActivity(), wishList);
-                                myList.setAdapter(adapter);
+            mObjectDatabaseReference = mDatabase.getReference().child("Object");
+            mObjectDatabaseReference.orderByChild("object_user_name").equalTo(friendSearched)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        ArrayList<ObjectModel> wishList = new ArrayList<>();
+                        for (DataSnapshot data : dataSnapshot.getChildren()) {
+                            ObjectModel wish = data.getValue(ObjectModel.class);
+                            if (!wish.isObject_offered()){
+                                wishList.add(0, wish);
                             }
+                        }
 
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
+                        adapter = new FriendsListAdapter(getActivity(), wishList);
+                        myList.setAdapter(adapter);
+                    }
 
-                            }
-                        });
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
 
             }
         });
-
         return rootView;
     }
 }
