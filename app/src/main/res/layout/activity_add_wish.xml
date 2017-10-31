@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.wcs.wishlisthackathon.AddWishActivity">
+    tools:context="fr.wcs.wishlisthackathon.AddWishActivity"
+    android:background="@color/colorAccent">
 
     <ImageView
         android:id="@+id/wishImage"
