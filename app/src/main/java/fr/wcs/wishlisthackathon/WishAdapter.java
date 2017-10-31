@@ -58,11 +58,21 @@ public class WishAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View convertView, ViewGroup viewGroup) {
+    public View getView(final int i, View convertView, final ViewGroup viewGroup) {
         if (convertView == null){
             convertView = LayoutInflater.from(viewGroup.getContext())
                     .inflate(R.layout.layout_item, viewGroup, false);
         }
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ObjectModel itemObject = (ObjectModel) item.get(i);
+                Intent intent = new Intent(viewGroup.getContext(), ModifyActivity.class);
+                intent.putExtra("wish", itemObject);
+                viewGroup.getContext().startActivity(intent);
+            }
+        });
 
         ObjectModel currentItem = (ObjectModel) getItem(i);
         final int position = i;

@@ -11,6 +11,7 @@ public class ObjectModel implements Parcelable {
 
     private String object_description;
     private String object_image;
+    private String object_url;
     private boolean object_offered;
     private String object_user_id;
     private String object_user_name;
@@ -20,9 +21,10 @@ public class ObjectModel implements Parcelable {
         // Needed for firebase
     }
 
-    public ObjectModel(String object_description, String object_image, boolean object_offered, String object_user_id, String object_user_name, String pigeon_user_id) {
+    public ObjectModel(String object_description, String object_image, String object_url, boolean object_offered, String object_user_id, String object_user_name, String pigeon_user_id) {
         this.object_description = object_description;
         this.object_image = object_image;
+        this.object_url = object_url;
         this.object_offered = object_offered;
         this.object_user_id = object_user_id;
         this.object_user_name = object_user_name;
@@ -56,6 +58,15 @@ public class ObjectModel implements Parcelable {
     public void setObject_image(String object_image) {
         this.object_image = object_image;
     }
+
+    public String getObject_url() {
+        return object_url;
+    }
+
+    public void setObject_url(String object_url) {
+        this.object_url = object_url;
+    }
+
 
     public boolean isObject_offered() {
         return object_offered;
@@ -98,6 +109,7 @@ public class ObjectModel implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(object_description);
         parcel.writeString(object_image);
+        parcel.writeString(object_url);
         parcel.writeByte((byte) (object_offered ? 1 : 0));
         parcel.writeString(object_user_id);
         parcel.writeString(object_user_name);
@@ -107,6 +119,7 @@ public class ObjectModel implements Parcelable {
     private ObjectModel(Parcel in) {
         object_description  = in.readString();
         object_image  = in.readString();
+        object_url  = in.readString();
         object_offered  = in.readByte() != 0;
         object_user_id = in.readString();
         object_user_name = in.readString();

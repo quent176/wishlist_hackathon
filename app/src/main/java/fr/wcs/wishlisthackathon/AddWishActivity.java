@@ -64,7 +64,7 @@ public class AddWishActivity extends AppCompatActivity {
                 descriptionImageContent = descriptionImage.getText().toString();
                 linkImageContent = linkImage.getText().toString();
 
-                ObjectModel objectModel = new ObjectModel(descriptionImageContent, linkImageContent,
+                ObjectModel objectModel = new ObjectModel(descriptionImageContent, linkImageContent, linkImageContent,
                         false, mUserId, userName, "null");
 
                 myRef.push().setValue(objectModel);

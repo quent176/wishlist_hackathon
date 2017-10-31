@@ -65,17 +65,9 @@ public class Tab1_Wishes extends Fragment {
                 myList.setAdapter(adapter);
                 Log.e("WISHES", "adapter added" );
 
-                myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        ObjectModel item = wishList.get(i);
-                        Intent intent = new Intent(getActivity(), ModifyActivity.class);
-                        intent.putExtra("objet", item);
-                        startActivity(intent);
-                    }
-                });
-
             }
+
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {

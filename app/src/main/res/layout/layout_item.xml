@@ -25,5 +25,6 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_weight="1"
-        android:background="@color/colorTransparent"/>
+        android:background="@color/colorTransparent"
+        android:clickable="false"/>
 </LinearLayout>
