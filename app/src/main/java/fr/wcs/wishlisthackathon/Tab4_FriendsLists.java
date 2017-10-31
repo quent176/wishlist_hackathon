@@ -23,7 +23,7 @@ import static fr.wcs.wishlisthackathon.R.layout.tab4_friendslists;
 
 public class Tab4_FriendsLists extends Fragment {
 
-    private WishAdapter adapter;
+    private FriendsListAdapter adapter;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mUsersDatabaseReference;
     private DatabaseReference mObjectDatabaseReference;
@@ -88,7 +88,7 @@ public class Tab4_FriendsLists extends Fragment {
                                     }
                                 }
 
-                                adapter = new WishAdapter(getActivity(), wishList);
+                                adapter = new FriendsListAdapter(getActivity(), wishList);
                                 myList.setAdapter(adapter);
                             }
 

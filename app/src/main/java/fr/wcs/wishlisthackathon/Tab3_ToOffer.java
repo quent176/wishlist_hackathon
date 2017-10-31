@@ -31,7 +31,7 @@ import com.squareup.picasso.Picasso;
 public class Tab3_ToOffer extends Fragment {
 
 
-    private WishAdapter adapter;
+    private ToOfferAdapter adapter;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mUsersDatabaseReference;
     private DatabaseReference mObjectDatabaseReference;
@@ -62,7 +62,7 @@ public class Tab3_ToOffer extends Fragment {
                     wishList.add(0, myObjectModel);
                 }
 
-                adapter = new WishAdapter(getActivity(), wishList);
+                adapter = new ToOfferAdapter(getActivity(), wishList);
                 myList.setAdapter(adapter);
             }
 

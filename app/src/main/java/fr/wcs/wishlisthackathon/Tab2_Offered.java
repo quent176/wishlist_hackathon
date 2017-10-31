@@ -21,7 +21,7 @@ import static fr.wcs.wishlisthackathon.WishActivity.wishRef;
 
 public class Tab2_Offered extends Fragment {
 
-    private WishAdapter adapter;
+    private OfferedAdapter adapter;
 
     String userId= "";
 
@@ -48,7 +48,7 @@ public class Tab2_Offered extends Fragment {
                     }
                 }
 
-                adapter = new WishAdapter(getActivity(), wishList);
+                adapter = new OfferedAdapter(getActivity(), wishList);
                 myList.setAdapter(adapter);
             }
 
