@@ -30,7 +30,7 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".AddWishActivity"
-            android:label="AddWishActivity"
+            android:label="Ajouter un souhait"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait"/>
 
@@ -40,8 +40,9 @@
             android:windowSoftInputMode="adjustResize"
             android:theme="@style/AppTheme.PopUp"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ModifyActivity">
-
+        <activity
+            android:name=".ModifyActivity"
+            android:label="Modifier votre souhait">
         </activity>
 
         <meta-data
