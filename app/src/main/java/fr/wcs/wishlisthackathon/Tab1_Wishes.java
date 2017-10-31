@@ -69,6 +69,9 @@ public class Tab1_Wishes extends Fragment {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         ObjectModel item = wishList.get(i);
+                        Log.e("WISHESPROUT",item.getObject_description() );
+                        Log.e("WISHESPROUT","WISHESPROUT" );
+
                         Intent intent = new Intent(getActivity(), ModifyActivity.class);
                         intent.putExtra("objet", item);
                         startActivity(intent);

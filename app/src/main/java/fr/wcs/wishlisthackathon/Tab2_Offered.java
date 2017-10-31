@@ -4,8 +4,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,9 +53,6 @@ public class Tab2_Offered extends Fragment {
                 }
 
                 adapter = new WishAdapter(getActivity(), wishList);
-                if(wishList.size() > 0){
-                    //   mBeMyFirst.setVisibility(View.GONE);
-                }
 
                 myList.setAdapter(adapter);
 
@@ -68,8 +63,6 @@ public class Tab2_Offered extends Fragment {
 
             }
         });
-        ImageView testPicasso = (ImageView) rootView.findViewById(R.id.imageViewTest1);
-        Picasso.with(getContext()).load("http://i.imgur.com/DvpvklR.png").into(testPicasso);
 
         return rootView;
     }
