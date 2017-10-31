@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,6 +21,7 @@ public class ModifyActivity extends AppCompatActivity {
 
     private FirebaseDatabase mDatabase;
     private DatabaseReference mObjectDatabaseReference;
+    private String mUid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +32,13 @@ public class ModifyActivity extends AppCompatActivity {
         ObjectModel wish = getIntent().getExtras().getParcelable("wish");
 
         //déclaration variable et récupération données via getter
-        String photo = wish.getObject_image();
+        final String photo = wish.getObject_image();
         String description = wish.getObject_description();
         String lien = wish.getObject_url();
 
         //Find id
-        TextView editTextDescription = (TextView) findViewById(R.id.descriptionImage);
-        TextView editTextURL = (TextView) findViewById(R.id.linkImage);
+        final TextView editTextDescription = (TextView) findViewById(R.id.descriptionImage);
+        final TextView editTextURL = (TextView) findViewById(R.id.linkImage);
         ImageView showImage = (ImageView) findViewById(R.id.wishImage);
 
         //input
@@ -47,8 +51,38 @@ public class ModifyActivity extends AppCompatActivity {
         mObjectDatabaseReference = mDatabase.getReference().child("Object");
 
         //Get Object on Firebase
+        mObjectDatabaseReference.orderByChild("object_description").equalTo(description).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot child: dataSnapshot.getChildren()) {
+                    mUid = child.getKey().toString();
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+
+        Button buttonModify = (Button) findViewById(R.id.buttonModify);
+        buttonModify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mObjectDatabaseReference.child(mUid).child("object_description").setValue(editTextDescription.getText().toString());
+                mObjectDatabaseReference.child(mUid).child("object_url").setValue(editTextURL.getText().toString());
+              //  mObjectDatabaseReference.child(mUid).child("object_image").setValue(editTextURL.getText().toString());
+                Toast.makeText(ModifyActivity.this, "Nouvelle description enregistrée",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button buttonCancel = (Button) findViewById(R.id.cancel);
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), WishActivity.class));
+            }
+        });
 
     }
 }
